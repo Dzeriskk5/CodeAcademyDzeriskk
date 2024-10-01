@@ -1,2 +1,0 @@
-This is content for commit number 2.
-This is an update for file_2.txt.
