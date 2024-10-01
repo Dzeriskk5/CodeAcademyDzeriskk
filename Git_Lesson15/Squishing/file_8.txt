@@ -1,1 +1,2 @@
 This is content for commit number 8.
+This is an update for file_8.txt.
