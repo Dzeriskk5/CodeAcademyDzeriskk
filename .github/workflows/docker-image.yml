@@ -5,6 +5,7 @@ on:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
+  workflow_dispatch:
 
 jobs:
 
@@ -15,6 +16,6 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: Login to Docker
-      run: docker login -u ${{ env.DOCKER_USER }} -p ${{ secret.PASSWORD }}
+      run: docker login -u Dzeriskk -p ${{ secrets.PASSWORD }}
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
