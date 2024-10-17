@@ -7,6 +7,24 @@ pipeline {
                 echo 'Hello World'
             }
         }
+        stage('Check sudo') {
+            steps {
+                script {
+                    // Check if sudo is installed
+                    def sudoCheck = sh(script: 'which sudo || echo "not found"', returnStdout: true).trim()
+                    
+                    if (sudoCheck == "not found") {
+                        echo 'sudo not found, installing...'
+                        sh '''
+                            apt-get update
+                            apt-get install -y sudo
+                        '''
+                    } else {
+                        echo 'sudo is already installed'
+                    }
+                }
+            }
+        }
         stage('Check Docker') {
             steps {
                 script {
@@ -16,8 +34,8 @@ pipeline {
                     if (dockerCheck == "not found") {
                         echo 'Docker not found, installing...'
                         sh '''
-                            apt-get update
-                            apt-get install -y docker.io
+                            sudo apt-get update
+                            sudo apt-get install -y docker.io
                         '''
                     } else {
                         echo 'Docker is already installed'
