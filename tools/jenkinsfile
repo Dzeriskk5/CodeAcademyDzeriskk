@@ -16,8 +16,8 @@ pipeline {
                     if (dockerCheck == "not found") {
                         echo 'Docker not found, installing...'
                         sh '''
-                            sudo apt-get update
-                            sudo apt-get install -y docker.io
+                            apt-get update
+                            apt-get install -y docker.io
                         '''
                     } else {
                         echo 'Docker is already installed'
