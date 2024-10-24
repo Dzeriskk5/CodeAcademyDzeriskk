@@ -1,0 +1,25 @@
+---
+- name: Ensure Docker is installed on all VMs
+  hosts: vms
+  become: yes  # Run tasks as root
+  tasks:
+    - name: Check if Docker is installed
+      shell: |
+        if ! command -v docker &> /dev/null; then
+          echo "Docker is not installed"
+          exit 1
+        fi
+      register: docker_check
+      ignore_errors: true
+
+    - name: Install Docker if not installed
+      apt:
+        name: docker.io
+        state: present
+      when: docker_check.rc != 0
+
+    - name: Ensure Docker service is running
+      service:
+        name: docker
+        state: started
+        enabled: yes
