@@ -1,0 +1,7 @@
+resource_group_name = "Dzeriskk"
+region = "westeurope"
+virtual_network_name = "Dzeriskk-vnet"
+subnet_name = "Dzeriskk-subnet"
+vm_name = "Dzeriskk-vm"
+machine_size = "Standard_B1ms"
+public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC97AAh6k3y75n3yqIAFf9I18JGuCSGvv+VOyOKcBVUHXqAViYEpW1QY44Y2YZcxiEo3nhzT6byfI223gpK2+24nzTZ1Oag2FkuDmTmj4rO1Ik7UiotcQW1bWzoaRU5PmE8hlI8JNZ1hHoWGsiNIQK0ekeeYzyHcVyTmxDvvdISC07Ck50L9uEjQISTdl2jTnhOkdZ39fjvHdeVETdGBsZpHVDpBhJjwM/nCK6b9+wF0rTfksNAr8LtwSe0jYAJHjD7jFwgRB8cG5Emy4tds7h3+0kxTgU1fmpXSOzGjOW1EQhr7TSaFSHVmTmQ7eLM+SEDMsC8mND01l9cbfHQrRr1S7PX/OupgzWo1z11CuXxYReOz4tM18dDs4xphkeSKNPQeCAoV7UPdDLHOEU6m9zI0vOzO0EV9nVZE5rOv98kOcTeLNEAIG24p4dHu/BOHB8gjzvY/vlfMzMU3kpIrfdlE7qaG6Pg3IGpw2T9Mr1qyRqI+sDGRsxuSTLSiBd5R/U= root@Dzeriskk"
