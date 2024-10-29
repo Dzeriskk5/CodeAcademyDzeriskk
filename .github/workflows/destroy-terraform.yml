@@ -34,24 +34,16 @@ jobs:
       - name: Terraform Format
         run: terraform fmt -check
 
-      - name: Go to specific folder
+      # Step 3: Configure Azure Credentials (if using Azure)
+      - name: Terraform plan 
         run: |
           cd 27
-          
-      # Step 3: Configure Azure Credentials (if using Azure)
-      - name: Azure Login
-        run: |
           az login --service-principal --username ${{ secrets.AZURE_CLIENT_ID }} --password ${{ secrets.AZURE_CLIENT_SECRET }} --tenant ${{ secrets.AZURE_TENANT_ID }}
-
-      # Step 4: Initialize Terraform
-      - name: Terraform Init
-        run: terraform init
-
-      # Step 5: Select the workspace (if using multiple environments)
-      - name: Select Workspace
-        run: |
+          terraform init
           terraform workspace select ${{ github.event.inputs.environment }}
-      # Step 6: Run Terraform Destroy
-      - name: Terraform Destroy
-        run: terraform destroy -var-file=vars.${{ github.event.inputs.environment }}.tfvars -auto-approve
-
+          terraform plan --destroy -var-file vars.${{ github.event.inputs.environment }}.tfvars -out ${{ github.event.inputs.environment }}.plan
+      - name: Terraform apply
+        run: |
+          cd 27
+              terraform workspace select ${{ github.event.inputs.environment }}
+              terraform apply --auto-approve "${{ github.event.inputs.environment }}.plan"
