@@ -1,4 +1,4 @@
-resource "azurerm_resource_group" "calecture27" {
+resource "_resource_groazurermup" "calecture27" {
   name     = "${var.resource_group_name}-${terraform.workspace}"
   location = local.region
 }
