@@ -20,10 +20,13 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3
 
+<<<<<<< HEAD
     - name: Install Chekov
       run: |
         pip install checkov
 
+=======
+>>>>>>> 82c21e45f9ecdfa06902a5f1270a6013828625b9
     - name: Run Chekov Security Checks
       run: |
         checkov -d .
@@ -43,7 +46,11 @@ jobs:
       run: terraform plan -var-file=${{ github.event.inputs.environment }}.tfvars
 
     - name: Terraform Apply
+<<<<<<< HEAD
       if: github.event.inputs.environment == 'prod' || github.event.inputs.environment == 'stage' || github.event.inputs.environment == 'dev'
+=======
+      if: ${{ github.event.inputs.environment == 'prod' || github.event.inputs.environment == 'stage' || github.event.inputs.environment == 'dev' }}
+>>>>>>> 82c21e45f9ecdfa06902a5f1270a6013828625b9
       run: terraform apply -auto-approve -var-file=${{ github.event.inputs.environment }}.tfvars
 
     - name: Output Public IPs
