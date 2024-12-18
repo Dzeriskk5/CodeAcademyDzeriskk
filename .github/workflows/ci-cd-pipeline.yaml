@@ -19,11 +19,19 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
-      
-    - name: Install Chekov
+
+    - name: Cache Checkov installation
+      uses: actions/cache@v3
+      with:
+        path: ~/.cache/pip
+        key: ${{ runner.os }}-checkov-${{ hashFiles('**/requirements.txt') }}
+        restore-keys: |
+          ${{ runner.os }}-checkov-
+
+    - name: Install Checkov
       run: |
         pip install checkov
-        
+
     - name: Run Chekov Security Checks
       run: |
         checkov -d ./47TerraformYay
@@ -45,7 +53,6 @@ jobs:
     - name: Terraform Apply
       if: ${{ github.event.inputs.environment == 'prod' || github.event.inputs.environment == 'stage' || github.event.inputs.environment == 'dev' }}
       run: terraform apply -auto-approve -var-file=${{ github.event.inputs.environment }}.tfvars
-
 
     - name: Output Public IPs
       run: terraform output public_ips
