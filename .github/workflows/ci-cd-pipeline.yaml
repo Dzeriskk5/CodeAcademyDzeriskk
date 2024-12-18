@@ -19,7 +19,11 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
-
+      
+    - name: Install Chekov
+      run: |
+        pip install checkov
+        
     - name: Run Chekov Security Checks
       run: |
         checkov -d ./47TerraformYay
