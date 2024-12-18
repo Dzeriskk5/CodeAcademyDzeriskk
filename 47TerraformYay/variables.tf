@@ -24,3 +24,12 @@ variable "vm_count" {
   type        = number
   default     = 3
 }
+variable "subnet_id" {
+  description = "The subnet ID for the EC2 instance"
+  type        = string
+}
+
+variable "security_group" {
+  description = "The security group ID for the EC2 instance"
+  type        = string
+}

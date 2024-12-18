@@ -16,6 +16,10 @@ jobs:
   terraform:
     runs-on: ubuntu-latest
 
+    defaults:
+      run:
+        working-directory: ./47TerraformYay
+
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
@@ -34,7 +38,7 @@ jobs:
 
     - name: Run Chekov Security Checks
       run: |
-        checkov -d ./47TerraformYay
+        checkov -d .
 
     - name: Set up Terraform
       uses: hashicorp/setup-terraform@v2
