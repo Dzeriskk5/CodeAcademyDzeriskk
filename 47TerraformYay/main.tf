@@ -1,3 +1,10 @@
+# Backend S3 bucket creation
+resource "aws_s3_bucket" "backend" {
+  bucket = "Backend-Bucket"
+  acl    = "private"
+}
+
+
 # Create an IAM Role
 resource "aws_iam_role" "ec2_role" {
   name               = "my-ec2-role"
