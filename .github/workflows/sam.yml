@@ -1,4 +1,4 @@
-name: SAM for 50
+name: SAM for 46
 
 on:
   push:
@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: ./50
+        working-directory: ./46
 
     steps:
       - name: Checkout code
